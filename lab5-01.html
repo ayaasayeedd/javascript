@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mydiv"></div>
+
+    <script>
+
+        
+
+
+        var apiTodos = new XMLHttpRequest();
+            apiTodos.open("GET","https://dummyjson.com/todos")
+            apiTodos.send();
+            apiTodos.onreadystatechange=function(){
+                
+                if(apiTodos.readyState == 4 && apiTodos.status ==200){
+                    var tty=JSON.parse(apiTodos.responseText).todos;
+                console.log(tty) 
+                for(var i=0;i<tty.length;i++)
+       {
+                  document.getElementById('mydiv').innerHTML+="<h3>"+"Completed: "+tty[i].completed+"</h3>"
+       }
+    }
+            }
+    </script>
+</body>
+</html>
